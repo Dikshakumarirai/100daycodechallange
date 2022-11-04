@@ -1,0 +1,43 @@
+What is java Anagrams?
+Two strings are called anagrams if they contain same set of characters but in different order.
+
+"keep ? peek", "Mother In Law - Hitler Woman".
+
+Input Format
+
+The first line contains a string a .
+The second line contains a string  b.
+
+Sample Input 0
+
+anagram
+margana
+
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+        // Complete the function
+        a = a.replace(" ","").toLowerCase();
+        b = b.replace(" ","").toLowerCase();
+        char[]c=a.toCharArray();
+        char[]d=b.toCharArray();
+        java.util.Arrays.sort(c);
+       java.util.Arrays.sort(d);
+        if (java.util.Arrays.equals(c,d))
+  return true;
+  else
+  return false; 
+    }
+
+    public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
