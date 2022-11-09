@@ -1,0 +1,37 @@
+what is java primality test?
+Java Primality Test problem in java programming you have Given a large integer, n,
+use the Java BigInteger class' isProbablePrime method to determine and print whether it's prime or not prime
+
+Sample Input
+
+13
+Sample Output
+
+prime
+Explanation
+
+The only positive divisors of 13 are 1 and13 , so we print prime.
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String n = bufferedReader.readLine();
+        BigInteger result= new BigInteger(n);
+    System.out.println(result.isProbablePrime(100) ? "prime" : "not prime");
+                bufferedReader.close();
+
+        bufferedReader.close();
+    }
+}
+
