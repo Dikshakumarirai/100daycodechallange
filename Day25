@@ -1,0 +1,52 @@
+What is inheritance?
+Inheritance in Java is a mechanism in which one object acquires all the properties and behaviors of a parent object. 
+It is an important part of OOPs (Object Oriented programming system).
+
+The above code will print:
+
+I am walking
+I am flying
+This means that a Bird object has all the properties that an Animal object has, as well as some additional unique properties.
+
+The code above is provided for you in your editor. You must add a sing method to the Bird class, then modify the main method accordingly so that the code prints the following lines:
+
+I am walking
+I am flying
+I am singing
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Animal{
+	void walk(){
+		System.out.println("I am walking");
+	}
+}
+
+class Bird extends Animal implements asd{
+    void fly(){
+        System.out.println("I am flying");
+    }
+    public void sing() {
+        System.out.println("I am singing");
+    }
+}
+interface asd{
+    void sing();
+}
+
+
+public class Solution{
+
+   public static void main(String args[]){
+
+	  Bird bird = new Bird();
+	  bird.walk();
+	  bird.fly();
+      bird.sing();
+	
+   }
+}
