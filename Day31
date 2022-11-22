@@ -1,0 +1,60 @@
+What is Hashset?
+HashSet is commonly used if we have to access elements randomly. It is because elements in a hash table are accessed using hash codes. 
+The hashcode of an element is a unique identity that helps to identify the element in a hash table.
+HashSet cannot contain duplicate elements.
+
+Output Format
+
+Print  lines. In the  line, print number of unique pairs you have after taking  pair as input.
+
+Sample Input
+
+5
+john tom
+john mary
+john tom
+mary anna
+mary anna
+Sample Output
+
+1
+2
+2
+3
+3
+Explanation
+
+After taking the first input, you have only one pair: (john,tom)
+After taking the second input, you have two pairs: (john, tom) and (john, mary)
+After taking the third input, you still have two unique pairs.
+After taking the fourth input, you have three unique pairs: (john,tom), (john, mary)
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];
+        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+
+HashSet<String> pairs = new HashSet<String>(t);
+
+    for(int i = 0; i < t; i++)
+    {
+        pairs.add("(" + pair_left[i] + ", " + pair_right[i] + ")" );
+        System.out.println(pairs.size());        
+    }
+
+    }
+}
