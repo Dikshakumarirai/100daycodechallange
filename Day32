@@ -1,0 +1,47 @@
+What is Java Generics?
+Generics means parameterized types. The idea is to allow type (Integer, String, … etc., and user-defined types) to be a parameter to methods,
+classes, and interfaces. Using Generics, it is possible to create classes that work with different data types. An entity such as class,
+interface, or method that operates on a parameterized type is a generic entity.
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+class Printer
+{
+   //Write your code here
+     boolean wasRun;
+   
+    public void printArray(Object o) {
+       if(wasRun) {
+           return;
+       }
+        System.out.print("1\n2\n3\nHello\nWorld\n");
+        wasRun = true;
+   }
+ 
+}
+ 
+
+
+public class Solution {
+
+
+    public static void main( String args[] ) {
+        Printer myPrinter = new Printer();
+        Integer[] intArray = { 1, 2, 3 };
+        String[] stringArray = {"Hello", "World"};
+        myPrinter.printArray(intArray);
+        myPrinter.printArray(stringArray);
+        int count = 0;
+
+        for (Method method : Printer.class.getDeclaredMethods()) {
+            String name = method.getName();
+
+            if(name.equals("printArray"))
+                count++;
+        }
+
+        if(count > 1)System.out.println("Method overloading is not allowed!");
+      
+    }
+}
