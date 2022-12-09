@@ -1,0 +1,36 @@
+What is stack?
+A stack is a logical concept that consists of a set of similar elements.
+
+Sample Input
+
+{}()
+({()})
+{}(
+[]
+Sample Output
+
+true
+true
+false
+true
+
+import java.util.*;
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            while(input.length() != (input = input.replaceAll("\\(\\)|\\[\\]|\\{\\}", "")).length());
+    System.out.println(input.isEmpty());
+        
+
+		}
+		
+	}
+}
+
+
+
