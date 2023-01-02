@@ -1,0 +1,105 @@
+What is 1D Array?
+A One-Dimensional Array is the simplest form of an Array in which the elements are stored linearly and can be accessed individually by specifying the index value of 
+each element stored in the array.
+Sample Input
+
+STDIN           Function
+-----           --------
+4               q = 4 (number of queries)
+5 3             game[] size n = 5, leap = 3 (first query)
+0 0 0 0 0       game = [0, 0, 0, 0, 0]
+6 5             game[] size n = 6, leap = 5 (second query)
+0 0 0 1 1 1     . . .
+6 3
+0 0 1 1 1 0
+3 1
+0 1 0
+Sample Output
+
+YES
+YES
+NO
+NO
+
+import java.util.*;
+
+public class Solution {
+
+    public static boolean canWin(int leap, int[] game) {
+    VirtualPlayer v = new VirtualPlayer(leap, game);
+    v.tick();
+    return v.winnable;
+
+}
+static class VirtualPlayer {
+    private int pos = 0; //pos-ition
+    private int lp; //lp means leap
+    private int[] map;
+    boolean winnable = false;
+    public VirtualPlayer(int lp, int[] map) {
+        this.lp = lp; //gets the values from the canWin function
+        this.map = map;
+
+    }
+    private void moveup() {
+        if (map[pos + 1] == 0) {
+            pos++;
+            tick();
+        }
+
+    }
+
+    private void movedown() {
+        if ((pos - 1) >= 0 && map[pos - 1] == 0) {
+            map[pos] = 1;
+            pos--;
+            tick();
+        }
+
+    }
+
+    private void jump() {
+        if ((pos + lp) < map.length) {
+            if (map[pos + lp] == 0) {
+                int posold = pos;
+                pos = pos + lp;
+                tick();
+                pos = posold;
+            }
+        }
+
+    }
+    void tick() {
+        //System.out.println("im at:"+pos);
+        if (pos == (map.length - 1) || ((pos + lp) >= map.length)) {
+            winnable = true;
+        }
+        else {
+            this.moveup();
+            if (lp != 0) {
+                this.jump();
+            } //cant jump 0 steps!
+            this.movedown();
+        }
+
+    }
+
+}
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        while (q-- > 0) {
+            int n = scan.nextInt();
+            int leap = scan.nextInt();
+            
+            int[] game = new int[n];
+            for (int i = 0; i < n; i++) {
+                game[i] = scan.nextInt();
+            }
+
+            System.out.println( (canWin(leap, game)) ? "YES" : "NO" );
+        }
+        scan.close();
+    }
+}
